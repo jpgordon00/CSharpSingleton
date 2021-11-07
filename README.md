@@ -28,3 +28,48 @@ A modern Singleton for C# with searching by arbitrary property, inheritance supp
 ## Limitations
 * Classes with 'ImplicitInstantiation' set to false may be created multiple times without actually being persisted.
 - Refer to the class properties '_conststructed' to see if a Singleton has been persisted, and/or overload the 'Constructor' and 'Destructor' functions.
+  
+## Examples
+* Use a Singleton with an Instance property.
+  ```c#
+class MySIngleton : InstanceSingleton<MySingleton> {
+}
+
+// somewhere else
+MySingleton instance = MySingleton.Instance;
+ ``` 
+* Find a Singleton by specyfing the 'Type' property and by ClassName.
+  ```c#
+class Mode : Singleton {
+  public override bool BaseOnly => true;
+  public override bool MatchByClassName => true;
+  ...
+}
+class PreMode : Mode {
+  public override bool BaseOnly => false;
+  ...
+}
+class PostMode : Mode {
+  public override bool BaseOnly => true;
+  
+  // do not match by class name, instead specify a property to match
+  public override bool MatchByClassName => false;
+  public override object Type => "PostMode";
+}
+
+class Server : {  
+  static Server() {
+    List<Mode> Modes = Singleton.FindAll<Mode>(); // list of all subclasses of mode
+    
+    // find mode by classname
+    // note you don't need to cast polymorphic return types
+  
+    // find only subtypes of 'Mode' that match the given 'Type'
+    PreMode mode = Singleton.Find<Mode>("PreMode");
+    PostMode mode = Singleton.Find<Mode>("PostMode");
+  
+    // exclude the generic to search for any matching Type 
+    mode = Singleton.Find("PostMode");
+  }
+}
+```  
