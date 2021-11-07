@@ -37,7 +37,7 @@ class MySIngleton : InstanceSingleton<MySingleton> {
 
 // somewhere else
 MySingleton instance = MySingleton.Instance;
- ``` 
+ ```  
 * Find a Singleton by specyfing the 'Type' property and by ClassName.
   ```c#
 class Mode : Singleton {
