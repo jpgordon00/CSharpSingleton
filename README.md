@@ -31,7 +31,7 @@ A modern Singleton for C# with searching by arbitrary property, inheritance supp
   
 ## Examples
 * Use a Singleton with an Instance property.
-  ```c#
+```c#
 class MySIngleton : InstanceSingleton<MySingleton> {
 }
 
@@ -39,7 +39,7 @@ class MySIngleton : InstanceSingleton<MySingleton> {
 MySingleton instance = MySingleton.Instance;
 ```  
 * Use a Singleton without implicit instantiation.
-  ```c#
+```c#
 class MySIngleton : InstanceSingleton<MySingleton> {
   public override bool ImplicitInstantiation => false;
 }
@@ -54,7 +54,7 @@ Singleton.Instantiate<MySingleton>();
 
 ```  
 * Find a Singleton by specyfing the 'Type' property and by ClassName.
-  ```c#
+```c#
 class Mode : Singleton {
   public override bool BaseOnly => true;
   public override bool MatchByClassName => true;
