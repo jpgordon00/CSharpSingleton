@@ -32,18 +32,18 @@ A modern Singleton for C# with searching by arbitrary property, inheritance supp
 ## Examples
 * Use a Singleton with an Instance property.
   ```c#
-class MySIngleton : InstanceSingleton<MySingleton> {
-}
+    class MySIngleton : InstanceSingleton<MySingleton> {
+    }
 
-// somewhere else
-MySingleton instance = MySingleton.Instance;
- ```  
+    // somewhere else
+    MySingleton instance = MySingleton.Instance;
+```  
 * Find a Singleton by specyfing the 'Type' property and by ClassName.
   ```c#
 class Mode : Singleton {
   public override bool BaseOnly => true;
   public override bool MatchByClassName => true;
-  ...
+...
 }
 class PreMode : Mode {
   public override bool BaseOnly => false;
