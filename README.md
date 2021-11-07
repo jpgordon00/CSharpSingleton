@@ -32,11 +32,26 @@ A modern Singleton for C# with searching by arbitrary property, inheritance supp
 ## Examples
 * Use a Singleton with an Instance property.
   ```c#
-    class MySIngleton : InstanceSingleton<MySingleton> {
-    }
+class MySIngleton : InstanceSingleton<MySingleton> {
+}
 
-    // somewhere else
-    MySingleton instance = MySingleton.Instance;
+// somewhere else
+MySingleton instance = MySingleton.Instance;
+```  
+* Use a Singleton without implicit instantiation.
+  ```c#
+class MySIngleton : InstanceSingleton<MySingleton> {
+  public override bool ImplicitInstantiation => false;
+}
+
+// somewhere else
+MySingleton instance = MySingleton.Instance; // is null
+Singleton.Instantiate<MySingleton>();
+// NOTE: there are many options for 'Instantiate'
+// include your own type and base type, using null to avoid matching either
+// or include a generic type in 'Instantiate'
+// or invoke 'InstantiateBase' with a generic to ignore the type of the given generic.
+
 ```  
 * Find a Singleton by specyfing the 'Type' property and by ClassName.
   ```c#
