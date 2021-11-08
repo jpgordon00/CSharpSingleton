@@ -5,7 +5,7 @@ using System.Linq;
 public static class SingletonUtils {
 
   public static bool TypeEquals(System.Type type, System.Type typee) {
-    return !type.IsGenericType ? type == typee : (type.IsGenericType && type.GetGenericTypeDefinition() == typee);
+    return !type.IsGenericType ? type == typee : (type.GetGenericTypeDefinition() == typee);
   }
 
   public static bool IsSameOrInherits(Type potentialBase, Type potentialDescendant) {
