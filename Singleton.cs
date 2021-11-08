@@ -14,6 +14,7 @@ public static class SingletonUtils {
   }
 
   public static System.Type RecursiveTypeSearch(System.Type type, params System.Type[] types) {
+     if (type == null) return type;
     if (types.ToList().Find(t => TypeEquals(t, type)) != null) return type;
     return RecursiveTypeSearch(type.BaseType, types);
   }
