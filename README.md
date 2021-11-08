@@ -65,7 +65,7 @@ class PreMode : Mode {
   ...
 }
 class PostMode : Mode {
-  public override bool BaseOnly => true;
+  public override bool BaseOnly => false;
   
   // do not match by class name, instead specify a property to match
   public override bool MatchByClassName => false;
