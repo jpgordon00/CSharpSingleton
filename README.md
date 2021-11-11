@@ -84,7 +84,7 @@ class Server : {
     PostMode mode = Singleton.Find<Mode>("PostMode");
   
     // exclude the generic to search for any matching Type 
-    mode = Singleton.Find("PostMode");
+    mode = (ServerMode) Singleton.Find("PostMode");
   }
 }
 ```  
